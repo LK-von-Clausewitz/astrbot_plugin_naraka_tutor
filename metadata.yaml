@@ -1,0 +1,15 @@
+name: astrbot_plugin_naraka_tutor
+desc: 永劫无间游戏技巧教学 RAG 插件。支持群聊中 @机器人 提问，自动从本地 PDF 知识库检索内容并调用 LLM 生成准确回答。
+help: |
+  使用步骤：
+  1. 将永劫无间 PDF 教学材料放入插件的 materials/ 目录。
+  2. 首次加载插件会自动构建向量知识库（也可使用 /naraka_reload 手动重建）。
+  3. 在 QQ 群聊中 @机器人 + 自然语言提问，如 "@机器人 太刀怎么振刀？"
+  4. 机器人会自动检索教学材料并给出基于材料的回答。
+  
+  管理员命令：
+  - /naraka_reload : 手动重建知识库
+  - /naraka_status : 查看知识库状态
+version: "1.0.0"
+author: YourName
+repo: https://github.com/YOUR_USERNAME/astrbot_plugin_naraka_tutor
