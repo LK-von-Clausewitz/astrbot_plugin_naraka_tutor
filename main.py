@@ -36,6 +36,7 @@ class NarakaTutorPlugin(Star):
         self.chunk_overlap = int(config.get("chunk_overlap", 64))
         self.top_k = int(config.get("top_k", 5))
         self.parse_tables = bool(config.get("parse_tables", True))
+        self.always_trigger_when_at = bool(config.get("always_trigger_when_at", False))
         self.trigger_keywords = list(config.get("trigger_keywords", []))
         self.system_prompt_template = str(config.get("system_prompt_template", ""))
 
@@ -125,12 +126,15 @@ class NarakaTutorPlugin(Star):
             f"[NarakaTutor] 状态:\n"
             f"- PDF 文件数: {len(pdf_files)}\n"
             f"- 向量记录数: {count}\n"
+            f"- 无条件 @触发: {'开启' if self.always_trigger_when_at else '关闭'}\n"
             f"- 触发关键词数: {len(self.trigger_keywords)}\n"
             f"- Top-K 检索: {self.top_k}"
         )
 
     def _should_trigger(self, text: str) -> bool:
-        """检查文本是否包含配置的触发关键词。"""
+        """检查是否满足 RAG 触发条件。"""
+        if self.always_trigger_when_at:
+            return True
         if not self.trigger_keywords:
             return True
         text_lower = text.lower()
