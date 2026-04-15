@@ -11,5 +11,5 @@ help: |
   - /naraka_reload : 手动重建知识库
   - /naraka_status : 查看知识库状态
 version: "1.0.0"
-author: YourName
-repo: https://github.com/YOUR_USERNAME/astrbot_plugin_naraka_tutor
+author: LK-von-Clausewitz
+repo: https://github.com/LK-von-Clausewitz/astrbot_plugin_naraka_tutor
